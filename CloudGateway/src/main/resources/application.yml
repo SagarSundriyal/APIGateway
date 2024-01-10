@@ -1,0 +1,36 @@
+server:
+  port: 8003
+  
+spring:
+  application:
+    name: API_GATEWAY
+  
+  cloud:
+    gateway:
+      routes:
+      - id: MOVIE-INFO-SERVICE
+        uri: lb://MOVIE-INFO-SERVICE
+        predicates:
+        - Path=/movieinfo/**
+      
+      - id: MOVIE-CATALOG-SERVICE
+        uri: lb://MOVIE-CATALOG-SERVICE
+        predicates:
+        - Path=/moviecatalog/**
+      
+      - id: RATING-DATA-SERVICE
+        uri: lb://RATING-DATA-SERVICE
+        predicates:
+        - Path=/ratingdata/**
+       
+      - id: CATEGORY-SERVICE
+        uri: lb://CATEGORY-SERVICE
+        predicates:
+        - Path=/category/**
+     
+      - id: PRODUCT-SERVICE
+        uri: lb://PRODUCT-SERVICE
+        predicates:
+        - Path=/products/**
+         
+          
